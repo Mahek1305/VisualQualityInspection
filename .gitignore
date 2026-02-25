@@ -1,0 +1,5 @@
+.venv/
+__pycache__/
+*.pyc
+casting_data/
+*.h5
