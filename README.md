@@ -42,20 +42,20 @@ The objective of this project is to:
 
 The dataset should be organized as follows:
 
+
 casting_data/
-│
 ├── train/
-│   ├── def_front/
-│   └── ok_front/
-│
+│ ├── def_front/
+│ └── ok_front/
 └── test/
-    ├── def_front/
-    └── ok_front/
+├── def_front/
+└── ok_front/
 
-- def_front → Defective casting images
-- ok_front → Good casting images
 
-This is a Binary Image Classification problem.
+- **def_front** → Defective casting images  
+- **ok_front** → Good casting images  
+
+This is a **Binary Image Classification** problem.
 
 ---
 
@@ -176,6 +176,8 @@ The system simulates a small production line quality control environment and sho
 ---
 
 ## 👨‍💻 Author
-- Mahek, Palak & Anchal
-- B.Tech. AI & DS
-- CGC University, Mohali
+Mahek, Palak & Anchal
+
+B.Tech. AI & DS
+
+CGC University, Mohali
