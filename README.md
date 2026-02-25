@@ -176,6 +176,6 @@ The system simulates a small production line quality control environment and sho
 ---
 
 ## 👨‍💻 Author
-Mahek, Palak & Anchal
-B.Tech. AI & DS
-CGC University, Mohali
+- Mahek, Palak & Anchal
+- B.Tech. AI & DS
+- CGC University, Mohali
