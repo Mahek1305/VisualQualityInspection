@@ -1,5 +1,12 @@
-.venv/
+
+venv/
 __pycache__/
 *.pyc
+*.pyo
 casting_data/
 *.h5
+static/uploads/
+*.pt
+*.pth
+.DS_Store
+Thumbs.db
