@@ -1,183 +1,199 @@
 # 🏭 Real-Time Visual Quality Inspection using CNN
 ## Casting Product Defect Detection System
 
----
+## 📌 Project Overview
 
-## 📌 Overview
+This project is an **AI-powered Visual Quality Inspection System** designed to automatically detect defects in casting products using **Computer Vision and Deep Learning (CNN)**.
 
-This project implements a Real-Time Visual Quality Inspection System for detecting defective metal casting products using a Convolutional Neural Network (CNN).
+The system allows users to upload an image of a casting product and instantly receive a prediction:
 
-The system is trained on a casting image dataset containing two classes:
+* ✅ **OK Product**
+* ❌ **Defective Product**
 
-- OK Casting
-- Defective Casting
-
-After training, the model is deployed using OpenCV to perform real-time inspection through a webcam, simulating a small production line setup.
+It also stores inspection results in a database for tracking and analysis.
 
 ---
 
-## 🎯 Objective
+## 🚀 Features
 
-The objective of this project is to:
-
-- Automate visual inspection of casting products
-- Detect defective products accurately
-- Reduce human inspection effort
-- Simulate real-time production line quality control
-
----
-
-## 🧠 Technologies Used
-
-- Python 3.x
-- TensorFlow / Keras
-- OpenCV
-- NumPy
-- Matplotlib
-- Convolutional Neural Network (CNN)
+* 📷 Upload casting product image
+* 🤖 AI-based defect detection using CNN
+* ⚡ Real-time prediction
+* 🧠 Trained on industrial dataset (Kaggle)
+* 💾 Stores results in MongoDB
+* 🌐 Web interface using Flask
+* 📊 (Optional) Prediction history tracking
 
 ---
 
-## 📂 Dataset Structure
+## 🏗️ Project Architecture
 
-The dataset should be organized as follows:
-
-
-casting_data/
-├── train/
-│ ├── def_front/
-│ └── ok_front/
-└── test/
-├── def_front/
-└── ok_front/
-
-
-- **def_front** → Defective casting images  
-- **ok_front** → Good casting images  
-
-This is a **Binary Image Classification** problem.
+```
+User Upload Image
+        ↓
+Flask Web App (Frontend + Backend)
+        ↓
+CNN Model (casting_model.h5)
+        ↓
+Prediction (OK / DEFECT)
+        ↓
+MongoDB (Store Results)
+```
 
 ---
 
-## 🏗 Model Architecture
+## 🧠 Model Training (Deep Learning)
 
-The CNN model consists of:
+### 📂 Dataset
 
-1. Conv2D (32 filters, ReLU activation)
-2. MaxPooling2D
-3. Conv2D (64 filters, ReLU activation)
-4. MaxPooling2D
-5. Conv2D (128 filters, ReLU activation)
-6. MaxPooling2D
-7. Flatten Layer
-8. Dense Layer (128 units, ReLU)
-9. Dropout (0.5)
-10. Output Layer (1 unit, Sigmoid activation)
+* Source: Kaggle (Casting Product Image Dataset)
+* Classes:
 
-Model Configuration:
+  * `ok_front`
+  * `def_front`
 
-- Optimizer: Adam
-- Loss Function: Binary Crossentropy
-- Metrics: Accuracy
-- Image Size: 128 × 128
-- Epochs: 10
+### ⚙️ Preprocessing
 
----
+* Resize images → `(300, 300)`
+* Normalize pixel values → `[0,1]`
+* ImageDataGenerator used
 
-## 🚀 How to Run the Project
+### 🧩 Model Architecture
 
-### 1️⃣ Install Dependencies
+* Convolutional Neural Network (CNN)
+* Layers:
 
-Open terminal and run:
+  * Conv2D + ReLU
+  * MaxPooling
+  * Flatten
+  * Dense Layers
+  * Sigmoid Output
 
-pip install tensorflow opencv-python numpy matplotlib
+### 📊 Training Details
 
----
+* Epochs: 10
+* Accuracy: ~99%
+* Loss: Binary Crossentropy
+* Optimizer: Adam
 
-### 2️⃣ Train the Model
+### 💾 Model Output
 
-Make sure your dataset is placed inside:
-
-casting_data/train  
-casting_data/test  
-
-Run:
-
-python train.py
-
-This will:
-- Load and preprocess images
-- Train the CNN model
-- Save the trained model as casting_model.h5
+```
+casting_model.h5
+```
 
 ---
 
-### 3️⃣ Run Real-Time Inspection
+## 🖥️ Backend (Flask)
 
-After training, run:
+### 📌 Features
 
-python realtime.py
+* Handles image upload
+* Calls prediction function
+* Saves results to MongoDB
 
-The webcam will open and display:
+### 📄 Main File: `app.py`
 
-- OK (Green)
-- DEFECT (Red)
+## 🤖 Prediction Logic: `predict.py`
 
-Press Q to exit the application.
+
+## 🌐 Frontend
+
+### 📄 File: `templates/index.html`
+
+* Built using HTML + CSS
+* Features:
+
+  * Upload image
+  * Display result
+  * Show confidence
 
 ---
 
-## ⚙️ Working Principle
+## 🗄️ Database (MongoDB)
 
-1. Capture frame from camera
-2. Resize frame to 128×128
-3. Normalize pixel values
-4. Pass image to trained CNN model
-5. Predict class (OK / DEFECT)
-6. Display result on screen
-7. Repeat continuously
+* Database Name: `casting_db`
+* Collection: `results`
+
+### 📌 Stored Data Example
+
+```json
+{
+  "image_name": "x1.jpg",
+  "result": "OK",
+  "confidence": 0.98,
+  "timestamp": "2026-04-26"
+}
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone Repository
+
+```
+git clone <repo-url>
+cd project-folder
+```
+
+### 2️⃣ Create Virtual Environment
+
+```
+python -m venv venv
+venv\Scripts\activate
+```
+
+### 3️⃣ Install Dependencies
+
+```
+pip install flask tensorflow opencv-python numpy pymongo
+```
+
+### 4️⃣ Run MongoDB
+
+Make sure MongoDB is running:
+
+```
+mongod
+```
+
+### 5️⃣ Run Application
+
+```
+python app.py
+```
+
+### 6️⃣ Open Browser
+
+```
+http://127.0.0.1:5000
+```
 
 ---
 
 ## 📊 Results
 
-- Successfully classifies casting products
-- Provides real-time prediction using webcam
-- Achieves high accuracy on test dataset
-
----
-
-## 🏭 Industrial Applications
-
-- Small-scale production lines
-- Metal casting factories
-- Automated quality inspection
-- Manufacturing defect detection systems
+* High accuracy (~99%)
+* Fast predictions
+* Works on real casting images
 
 ---
 
 ## 🔮 Future Improvements
 
-- Implement Transfer Learning (MobileNet, EfficientNet)
-- Add defect localization using YOLO
-- Add confidence score display
-- Save defective images automatically
-- Deploy on embedded systems (Raspberry Pi / Jetson Nano)
-
----
-
-## 📌 Conclusion
-
-This project demonstrates the application of Deep Learning in industrial automation.  
-A CNN-based model is trained to classify casting defects and deployed for real-time visual inspection using a webcam.
-
-The system simulates a small production line quality control environment and showcases how AI can enhance manufacturing processes.
+* 📊 Dashboard (Defect vs OK analytics)
+* 🔍 Defect localization (Grad-CAM)
+* ☁️ Deployment on cloud
+* 📱 Mobile app integration
 
 ---
 
 ## 👨‍💻 Author
-Mahek, Palak & Anchal
 
-B.Tech. AI & DS
+**Mahek Aggarwal**
+B.Tech AI & Data Science
 
-CGC University, Mohali
+---
+
+This project is for educational purposes.
