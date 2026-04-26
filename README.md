@@ -177,8 +177,16 @@ http://127.0.0.1:5000
 * High accuracy (~99%)
 * Fast predictions
 * Works on real casting images
-
 ---
+
+## 📸 Sample Results
+
+### ✅ OK Product
+![OK](https://github.com/Mahek1305/VisualQualityInspection/blob/main/Screenshot%202026-04-26%20104055.png)
+
+### ❌ Defective Product
+![DEFECT](https://github.com/Mahek1305/VisualQualityInspection/blob/main/Screenshot%202026-04-26%20104110.png)
+
 
 ## 🔮 Future Improvements
 
@@ -192,6 +200,7 @@ http://127.0.0.1:5000
 ## 👨‍💻 Author
 
 **Mahek Aggarwal**
+
 B.Tech AI & Data Science
 
 ---
