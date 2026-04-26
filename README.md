@@ -196,4 +196,3 @@ B.Tech AI & Data Science
 
 ---
 
-This project is for educational purposes.
