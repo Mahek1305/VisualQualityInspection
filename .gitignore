@@ -2,6 +2,7 @@
 venv/
 __pycache__/
 *.pyc
+.env
 *.pyo
 casting_data/
 *.h5
